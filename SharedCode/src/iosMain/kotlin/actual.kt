@@ -1,4 +1,4 @@
-package com.isabelpalomar
+package com.isabelpalomar.startmultiplatform
 
 import platform.UIKit.UIDevice
 

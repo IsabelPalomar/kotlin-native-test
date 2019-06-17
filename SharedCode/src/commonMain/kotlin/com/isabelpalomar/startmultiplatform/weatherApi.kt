@@ -1,4 +1,4 @@
-package com.isabelpalomar
+package com.isabelpalomar.startmultiplatform 
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngine
@@ -10,6 +10,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JSON
 
 class WeatherApi(private val engine: HttpClientEngine) {
+
     private val client by lazy {
         HttpClient(engine) {
             install(JsonFeature) {
@@ -27,10 +28,4 @@ class WeatherApi(private val engine: HttpClientEngine) {
     companion object {
         private const val baseUrl = "https://samples.openweathermap.org"
     }
-
-    @Serializable
-    data class Weather(val coord: Coordinate, val base: String)
-
-    @Serializable
-    data class Coordinate(val lon: Float, val lat: Float)
 }

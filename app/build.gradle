@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.isabelpalomar"
+        applicationId "com.isabelpalomar.startmultiplatform"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
@@ -21,6 +21,9 @@ android {
         }
     }
 
+    packagingOptions {
+        exclude 'META-INF/*.kotlin_module'
+    }
 
     dynamicFeatures = [":SharedCode"]
 
@@ -40,5 +43,8 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1"
     implementation 'io.ktor:ktor-client-okhttp:1.0.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
+
+    implementation 'com.squareup.sqldelight:android-driver:1.1.3'
 
 }
