@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Kotlin Native</string>
+    <string name="title_sharedcode">SharedCode</string>
+</resources>
