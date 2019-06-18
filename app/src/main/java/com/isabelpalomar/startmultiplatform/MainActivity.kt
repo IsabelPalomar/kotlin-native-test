@@ -47,10 +47,22 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
         val weatherDao = WeatherDao(database)
         val weatherApi = WeatherApi(engine)
+        val countriesApi = CountriesApi(engine)
         val weatherRepository = WeatherRepository(weatherApi, weatherDao)
+        val countriesRepository = CountriesRepository(countriesApi)
+
         launch(Dispatchers.Main) {
             try {
                 val result = withContext(Dispatchers.IO) { weatherRepository.fetchWeather() }
+                Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_LONG).show()
+            }
+        }
+        launch(Dispatchers.Main) {
+            try {
+                val result = withContext(Dispatchers.IO) { countriesRepository.fetchCountries() }
                 Toast.makeText(this@MainActivity, result.toString(), Toast.LENGTH_LONG).show()
             } catch (e: Exception) {
                 e.printStackTrace()
